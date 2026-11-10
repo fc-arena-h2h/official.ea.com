@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --editorial-dark: #111215;
+    --editorial-light: #f4f4f0;
+    --editorial-crimson: #d9232e;
+    --editorial-offwhite: #ededeb;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body {
+    background-color: #111215;
+    color: #f3f3f1;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Tall Ultra-Condensed Editorial Display Font (Matches "DEADPOOL" & "DIRECTED BY SHAWN LEVY") */
+.font-editorial {
+  font-family: 'Antonio', 'Oswald', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: 'Antonio', 'Oswald', sans-serif;
+}
+
+/* Vertical Rotated Year/Season Tag ([2026] on the right of the giant hero text) */
+.vertical-tag {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+}
+
+/* Scrolling Diagonal Crimson Ticker Ribbon (Matches 00:02 - 00:03 in Video) */
+@keyframes marqueeTicker {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-ticker {
+  display: flex;
+  width: max-content;
+  animation: marqueeTicker 22s linear infinite;
+}
+
+/* Slow Rotating Circular Stamp Badge (Bottom-Right of Hero & Section 4) */
+@keyframes spinStamp {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-stamp {
+  animation: spinStamp 18s linear infinite;
+}
+
+/* Book/Join Pill Button with Red Arrow Circle (Matches "BOOK NOW (↗)" in Video 00:01) */
+.editorial-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px 6px 20px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.editorial-pill-btn:hover {
+  transform: translateY(-2px);
+  border-color: #d9232e;
+  background: rgba(217, 35, 46, 0.12);
+}
+
+/* Giant Dark Curved Arch Bottom Transition (Matches 00:03 - 00:05 in Video) */
+.dark-arch-bottom {
+  border-bottom-left-radius: 50% 140px;
+  border-bottom-right-radius: 50% 140px;
+}
+
+@media (min-width: 768px) {
+  .dark-arch-bottom {
+    border-bottom-left-radius: 50% 220px;
+    border-bottom-right-radius: 50% 220px;
+  }
+}
+
+/* Tactile Glass Card for Modals & Overlays */
+.tactile-glass-card {
+  position: relative;
+  border-radius: 28px;
+  background: linear-gradient(
+    160deg,
+    rgba(32, 35, 44, 0.92) 0%,
+    rgba(18, 20, 26, 0.98) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(24px);
+}

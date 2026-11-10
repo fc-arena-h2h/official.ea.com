@@ -1,0 +1,6 @@
+{
+  "name": "FC ARENA VS — Mobile Esports H2H Tournament Platform",
+  "description": "Enter the arena. High-stakes EA Sports FC Mobile H2H tournament platform featuring dynamic group leagues, knockout stages, and instant live brackets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
