@@ -205,7 +205,7 @@ export const Section4ArenaGallery: React.FC<Section4ArenaGalleryProps> = ({
               </div>
               <div className="relative aspect-[16/11] rounded-2xl overflow-hidden bg-[#111215]">
                 <img
-                  src="/assets/aistudio/Screenshot_20261110-072518_4b2a73ad.jpg"
+                  src="assets/aistudio/Screenshot_20261110-072518_4b2a73ad.jpg"
                   alt="FC Arena VS Close-up Squad"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
@@ -281,7 +281,7 @@ export const Section4ArenaGallery: React.FC<Section4ArenaGalleryProps> = ({
               </div>
 
               <img
-                src="/assets/aistudio/1793092487462-Picsart-BackgroundRemover.jpg_92f29578.png"
+                src="assets/aistudio/1793092487462-Picsart-BackgroundRemover.jpg_92f29578.png"
                 alt="FC Arena Cutout"
                 className="w-40 sm:w-44 h-auto object-contain absolute -bottom-4 -right-3 z-20 pointer-events-none drop-shadow-[0_14px_24px_rgba(0,0,0,0.75)]"
               />
@@ -301,7 +301,7 @@ export const Section4ArenaGallery: React.FC<Section4ArenaGalleryProps> = ({
               </div>
               <div className="relative aspect-[16/11] rounded-2xl overflow-hidden bg-[#111215]">
                 <img
-                  src="/assets/aistudio/Screenshot_20261110-072539_d71ef251.jpg"
+                  src="assets/aistudio/Screenshot_20261110-072539_d71ef251.jpg"
                   alt="FC Arena VS Full Roster"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />

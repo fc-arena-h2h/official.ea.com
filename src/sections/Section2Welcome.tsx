@@ -31,43 +31,43 @@ interface StarPlayerSlide {
 
 const STAR_PLAYER_SLIDES: StarPlayerSlide[] = [
   {
-    src: '/assets/aistudio/images__28_-removebg-preview_8fccebd3.png',
+    src: 'assets/aistudio/images__28_-removebg-preview_8fccebd3.png',
     name: 'MBAPPE',
     tag: 'VIP PASS',
     ovr: 'FC 27',
   },
   {
-    src: '/assets/aistudio/gettyimages-2234200789-removebg-preview_15fe8a72.png',
+    src: 'assets/aistudio/gettyimages-2234200789-removebg-preview_15fe8a72.png',
     name: 'RONALDO',
     tag: 'ICON 7',
     ovr: 'ARENA',
   },
   {
-    src: '/assets/aistudio/Messi-2-removebg-preview_5ea71b86.png',
+    src: 'assets/aistudio/Messi-2-removebg-preview_5ea71b86.png',
     name: 'MESSI 10',
     tag: 'GOAT PASS',
     ovr: 'FC 27',
   },
   {
-    src: '/assets/aistudio/images__32_-removebg-preview_2eb99551.png',
+    src: 'assets/aistudio/images__32_-removebg-preview_2eb99551.png',
     name: 'YAMAL',
     tag: 'NEXT GEN',
     ovr: '1V1 H2H',
   },
   {
-    src: '/assets/aistudio/images__31_-removebg-preview_f89281c1.png',
+    src: 'assets/aistudio/images__31_-removebg-preview_f89281c1.png',
     name: 'NEYMAR JR',
     tag: 'SKILL PRO',
     ovr: 'FC 27',
   },
   {
-    src: '/assets/aistudio/images__30_-removebg-preview_deb450de.png',
+    src: 'assets/aistudio/images__30_-removebg-preview_deb450de.png',
     name: 'LEO MESSI',
     tag: 'LEGEND 10',
     ovr: 'ARENA',
   },
   {
-    src: '/assets/aistudio/cnf4ksKuECnyo5wG_Stadiumastro-removebg-preview_be0262f3.png',
+    src: 'assets/aistudio/cnf4ksKuECnyo5wG_Stadiumastro-removebg-preview_be0262f3.png',
     name: 'NEYMAR 10',
     tag: 'CHAMPION',
     ovr: '1V1 H2H',
@@ -82,77 +82,77 @@ interface AppScreenshot {
 
 const APP_SCREENSHOTS: AppScreenshot[] = [
   {
-    src: '/assets/aistudio/Screenshot_20261110-130349_c4f7a45e.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130349_c4f7a45e.jpg',
     title: 'Elite Arena Dashboard',
     caption: 'Player passport, 2D Tactics Board & active cups',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-130411_973daa18.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130411_973daa18.jpg',
     title: 'Discover Tournaments',
     caption: 'Join Group + Knockout cups with BDT/USDT prize pools',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-130951_b7e9be32.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130951_b7e9be32.jpg',
     title: 'Pro Series Tournament Hub',
     caption: 'Live participant counter, group tables, brackets & rules',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-130425_494853a0.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130425_494853a0.jpg',
     title: 'My Match Center',
     caption: 'Track Leg 1 & Leg 2 aggregate scores and match history',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-131055_38c38956.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-131055_38c38956.jpg',
     title: 'Group Standings & Fixtures',
     caption: 'Real-time points table (P, W, D, L, GD, PTS) & match deadlines',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-131108_86592d39.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-131108_86592d39.jpg',
     title: 'Knockout Quarter Finals',
     caption: 'Interactive left & right bracket progression',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-130808_2774b01b.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130808_2774b01b.jpg',
     title: 'Publisher Portal',
     caption: 'Create official competitions or sandbox demo tournaments',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-130905_219b2806.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130905_219b2806.jpg',
     title: 'Tournament Structure Setup',
     caption: 'Configure Group + Knockout formats, 16/32/64 slots & prizes',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-131012_c0652f55.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-131012_c0652f55.jpg',
     title: 'Host Control Terminal',
     caption: 'Tournament Command center with auto-progression engine',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-131016_96d97fff.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-131016_96d97fff.jpg',
     title: 'Automated Group & Match Deploy',
     caption: 'Shuffle balanced groups and deploy Home & Away fixtures',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-131028_e45f1a49.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-131028_e45f1a49.jpg',
     title: 'Matchmaking Engine',
     caption: 'Select 1-Match or 2-Match round-robin & custom play deadlines',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-131022_cec34be6.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-131022_cec34be6.jpg',
     title: 'Score Authority & Custom Fixtures',
     caption: 'Choose Player Upload or Only Publisher score management',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-130442_8a7cd72d.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130442_8a7cd72d.jpg',
     title: 'Verified Player Profile',
     caption: 'Manage your Arena profile and connected social channels',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-130511_b1a781d7.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130511_b1a781d7.jpg',
     title: 'Dark Glassmorphic UI',
     caption: 'Switch seamlessly between Light Mode and Dark Glass theme',
   },
   {
-    src: '/assets/aistudio/Screenshot_20261110-130549_e0985b3c.jpg',
+    src: 'assets/aistudio/Screenshot_20261110-130549_e0985b3c.jpg',
     title: 'Arena Menu & Services',
     caption: 'Push notifications, 24/7 player support & community links',
   },
@@ -428,7 +428,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
                 className="relative z-20 w-48 sm:w-64 md:w-72 rounded-2xl overflow-hidden bg-[#181a22] border-2 border-white/20 shadow-[0_24px_60px_rgba(0,0,0,0.92)] cursor-pointer group block"
               >
                 <img
-                  src="/assets/aistudio/Screenshot_20261110-072518_4b2a73ad.jpg"
+                  src="assets/aistudio/Screenshot_20261110-072518_4b2a73ad.jpg"
                   alt="FC ARENA VS Official Squad"
                   referrerPolicy="no-referrer"
                   className="w-full h-40 sm:h-48 md:h-52 object-cover object-center group-hover:scale-105 transition-transform duration-500"
@@ -486,7 +486,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
               {/* App Squircle Icon */}
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-[1.35rem] overflow-hidden shadow-[0_12px_28px_rgba(0,0,0,0.22)] border border-black/10 shrink-0 bg-[#111215]">
                 <img
-                  src="/assets/aistudio/fc-arena-logo.png"
+                  src="assets/aistudio/fc-arena-logo.png"
                   onError={(e) => {
                     e.currentTarget.src =
                       'https://fc-arena-h2h.github.io/tournament.com/pwa-512x512.png?v=2';

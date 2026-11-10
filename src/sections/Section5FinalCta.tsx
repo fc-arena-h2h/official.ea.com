@@ -62,7 +62,7 @@ export const Section5FinalCta: React.FC<Section5FinalCtaProps> = ({
           {/* Overlapping Cutout Squad Image at Bottom Center */}
           <div className="relative -mt-6 sm:-mt-12 md:-mt-20 z-20 flex flex-col items-center">
             <img
-              src="/assets/aistudio/1793092487462-Picsart-BackgroundRemover.jpg_92f29578.png"
+              src="assets/aistudio/1793092487462-Picsart-BackgroundRemover.jpg_92f29578.png"
               alt="FC Arena VS Champions Cutout"
               className="w-[290px] sm:w-[390px] md:w-[470px] h-auto object-contain drop-shadow-[0_24px_45px_rgba(0,0,0,0.35)]"
             />
@@ -119,7 +119,7 @@ export const Section5FinalCta: React.FC<Section5FinalCtaProps> = ({
         <footer className="mt-16 pt-8 border-t border-black/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-[0.18em] text-black/60">
           <div className="flex items-center gap-3">
             <img
-              src="/assets/aistudio/fc-arena-logo.png"
+              src="assets/aistudio/fc-arena-logo.png"
               alt="FC Arena VS Logo"
               className="w-6 h-6 rounded-md object-cover"
             />

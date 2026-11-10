@@ -104,7 +104,7 @@ export const Section1Hero: React.FC<Section1HeroProps> = ({ t }) => {
               aria-label="FC Arena VS Official Emblem"
             >
               <img
-                src="/assets/aistudio/fc-arena-logo.png"
+                src="assets/aistudio/fc-arena-logo.png"
                 onError={(e) => {
                   e.currentTarget.src =
                     'https://fc-arena-h2h.github.io/tournament.com/pwa-192x192.png?v=2';
