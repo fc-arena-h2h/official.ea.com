@@ -1,0 +1,21 @@
+{
+  "name": "FC ARENA VS OFFICIAL — Mobile Esports H2H Tournament Platform",
+  "short_name": "FC ARENA VS",
+  "description": "Enter the arena. High-stakes EA Sports FC Mobile H2H tournament platform featuring dynamic group leagues, knockout stages, and instant live brackets.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#111215",
+  "theme_color": "#d9232e",
+  "icons": [
+    {
+      "src": "https://fc-arena-h2h.github.io/tournament.com/pwa-192x192.png?v=2",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://fc-arena-h2h.github.io/tournament.com/pwa-512x512.png?v=2",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

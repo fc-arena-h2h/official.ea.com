@@ -22,6 +22,19 @@ export function App() {
   const t = TRANSLATIONS[lang];
 
   useEffect(() => {
+    document.documentElement.lang = lang;
+    const currentUrl = window.location.origin + window.location.pathname;
+    const canonicalEl = document.getElementById('canonical-link') as HTMLLinkElement | null;
+    if (canonicalEl && window.location.hostname.includes('github.io')) {
+      canonicalEl.href = currentUrl;
+    }
+    const ogUrlEl = document.getElementById('og-url-meta') as HTMLMetaElement | null;
+    if (ogUrlEl && window.location.hostname.includes('github.io')) {
+      ogUrlEl.content = currentUrl;
+    }
+  }, [lang]);
+
+  useEffect(() => {
     const initAnimations = () => {
       const gsap = window.gsap;
       const ScrollTrigger = window.ScrollTrigger;
