@@ -2,10 +2,11 @@
 
 @layer base {
   :root {
-    --editorial-dark: #111215;
+    --editorial-dark: #0e1014;
+    --editorial-surface: #151821;
     --editorial-light: #f4f4f0;
     --editorial-crimson: #d9232e;
-    --editorial-offwhite: #ededeb;
+    --editorial-offwhite: #ebebE6;
   }
 
   html {
@@ -16,31 +17,41 @@
 
   html,
   body {
-    background-color: #111215;
+    background-color: #0e1014;
     color: #f3f3f1;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
   }
 }
 
-/* Tall Ultra-Condensed Editorial Display Font (Matches "DEADPOOL" & "DIRECTED BY SHAWN LEVY") */
+/* Tall Ultra-Condensed Athletic Display Font */
 .font-editorial {
   font-family: 'Antonio', 'Oswald', sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
 .font-display {
   font-family: 'Antonio', 'Oswald', sans-serif;
 }
 
-/* Vertical Rotated Year/Season Tag ([2026] on the right of the giant hero text) */
-.vertical-tag {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: rotate(180deg);
+/* Hide scrollbars cleanly on horizontal carousels */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Scrolling Diagonal Crimson Ticker Ribbon (Matches 00:02 - 00:03 in Video) */
+/* Subtle Architectural Grid Background for Dark Sections */
+.arena-grid-bg {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+}
+
+/* Scrolling Crimson Ticker Ribbon */
 @keyframes marqueeTicker {
   0% {
     transform: translateX(0%);
@@ -53,10 +64,10 @@
 .animate-marquee-ticker {
   display: flex;
   width: max-content;
-  animation: marqueeTicker 22s linear infinite;
+  animation: marqueeTicker 26s linear infinite;
 }
 
-/* Slow Rotating Circular Stamp Badge (Bottom-Right of Hero & Section 4) */
+/* Slow Rotating Circular Stamp Badge */
 @keyframes spinStamp {
   0% {
     transform: rotate(0deg);
@@ -67,54 +78,56 @@
 }
 
 .animate-spin-stamp {
-  animation: spinStamp 18s linear infinite;
+  animation: spinStamp 20s linear infinite;
 }
 
-/* Book/Join Pill Button with Red Arrow Circle (Matches "BOOK NOW (↗)" in Video 00:01) */
+/* Editorial Pill CTA Button */
 .editorial-pill-btn {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 6px 8px 6px 20px;
+  padding: 7px 8px 7px 22px;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.05);
   color: #ffffff;
   transition:
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.3s ease,
-    background-color 0.3s ease;
+    transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .editorial-pill-btn:hover {
   transform: translateY(-2px);
   border-color: #d9232e;
-  background: rgba(217, 35, 46, 0.12);
+  background: rgba(217, 35, 46, 0.14);
+  box-shadow: 0 12px 28px rgba(217, 35, 46, 0.25);
 }
 
-/* Giant Dark Curved Arch Bottom Transition (Matches 00:03 - 00:05 in Video) */
+/* Curved Arch Bottom Transition */
 .dark-arch-bottom {
-  border-bottom-left-radius: 50% 140px;
-  border-bottom-right-radius: 50% 140px;
+  border-bottom-left-radius: 50% 90px;
+  border-bottom-right-radius: 50% 90px;
 }
 
 @media (min-width: 768px) {
   .dark-arch-bottom {
-    border-bottom-left-radius: 50% 220px;
-    border-bottom-right-radius: 50% 220px;
+    border-bottom-left-radius: 50% 160px;
+    border-bottom-right-radius: 50% 160px;
   }
 }
 
-/* Tactile Glass Card for Modals & Overlays */
+/* Tactile Glass Card */
 .tactile-glass-card {
   position: relative;
-  border-radius: 28px;
+  border-radius: 24px;
   background: linear-gradient(
     160deg,
-    rgba(32, 35, 44, 0.92) 0%,
-    rgba(18, 20, 26, 0.98) 100%
+    rgba(28, 31, 40, 0.92) 0%,
+    rgba(16, 18, 24, 0.98) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.78);
-  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(20px);
 }

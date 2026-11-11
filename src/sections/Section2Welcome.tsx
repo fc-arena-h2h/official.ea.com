@@ -14,6 +14,7 @@ import {
   Send,
   Share2,
   X,
+  ArrowUpRight,
 } from 'lucide-react';
 import { TranslationContent } from '../i18n/translations';
 
@@ -165,10 +166,7 @@ const OFFICIAL_TELEGRAM_URL = 'https://t.me/fcarenavsofficial';
 const OFFICIAL_FACEBOOK_URL =
   'https://www.facebook.com/profile.php?id=61595965529079';
 
-export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
-  onOpenModal,
-  t,
-}) => {
+export const Section2Welcome: React.FC<Section2WelcomeProps> = ({ t }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isFlashActive, setIsFlashActive] = useState(false);
   const [selectedScreenshot, setSelectedScreenshot] =
@@ -185,15 +183,19 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
     return () => clearInterval(interval);
   }, []);
 
-  const handleManualNext = () => {
+  const handleManualStep = (dir: 'prev' | 'next') => {
     setIsFlashActive(true);
-    setActiveIndex((prev) => (prev + 1) % STAR_PLAYER_SLIDES.length);
+    setActiveIndex((prev) =>
+      dir === 'next'
+        ? (prev + 1) % STAR_PLAYER_SLIDES.length
+        : (prev - 1 + STAR_PLAYER_SLIDES.length) % STAR_PLAYER_SLIDES.length
+    );
     setTimeout(() => setIsFlashActive(false), 1000);
   };
 
   const scrollScreenshots = (direction: 'left' | 'right') => {
     if (!scrollContainerRef.current) return;
-    const amount = direction === 'left' ? -300 : 300;
+    const amount = direction === 'left' ? -320 : 320;
     scrollContainerRef.current.scrollBy({ left: amount, behavior: 'smooth' });
   };
 
@@ -205,111 +207,64 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
       id="section-2"
       className="relative w-full bg-[#f4f4f0] overflow-hidden select-none"
     >
-      {/* Dark Curved-Arch Stage Sitting Above the Off-White Editorial Section */}
-      <div className="dark-arch-bottom relative w-full bg-[#111215] text-[#f3f3f1] pt-16 sm:pt-20 pb-20 sm:pb-28 px-3 sm:px-6 md:px-12 shadow-[0_24px_60px_rgba(0,0,0,0.22)] overflow-hidden">
-        {/* Subtle Concentric Radar Circle Behind the Center Collage */}
-        <div className="pointer-events-none absolute left-1/2 bottom-[-120px] -translate-x-1/2 w-[420px] h-[420px] sm:w-[560px] sm:h-[560px] rounded-full border border-white/[0.06] bg-white/[0.015]" />
+      {/* =====================================================================
+          PART A: DARK CURVED-ARCH TOURNAMENT ENGINE & STAR PLAYER SHOWCASE
+      ====================================================================== */}
+      <div className="dark-arch-bottom relative w-full bg-[#0e1014] arena-grid-bg text-[#f3f3f1] pt-16 sm:pt-24 pb-20 sm:pb-28 px-4 sm:px-6 md:px-10 shadow-[0_24px_60px_rgba(0,0,0,0.2)] overflow-hidden">
+        {/* Subtle Concentric Circle Behind Center Collage */}
+        <div className="pointer-events-none absolute left-1/2 bottom-[-140px] -translate-x-1/2 w-[440px] h-[440px] sm:w-[600px] sm:h-[600px] rounded-full border border-white/[0.06] bg-white/[0.01]" />
 
-        <div className="relative z-10 max-w-[1360px] mx-auto px-3 sm:px-0">
-          {/* Top 3-Zone Editorial Row */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-start gap-10">
-            {/* Left Column: ② TOURNAMENT ENGINE + Red "FC ARENA STUDIO" Badge + Play Button & Dots */}
-            <div className="anim-slide-left lg:col-span-3 space-y-6">
-              <div className="space-y-3">
-                <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.2em] text-zinc-400">
-                  <span className="w-4 h-4 rounded-full border border-zinc-600 inline-flex items-center justify-center text-[9px] text-white">
-                    2
-                  </span>
-                  <span>{t.engineTag}</span>
-                </div>
-
-                <div className="inline-block px-3.5 py-1.5 bg-[#d9232e] text-white font-editorial font-bold text-base sm:text-lg tracking-[0.12em] uppercase">
-                  {t.studioBadge}
-                </div>
+        <div className="relative z-10 max-w-[1360px] mx-auto">
+          {/* Top Section Header Row */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/[0.08]">
+            <div className="anim-slide-left space-y-2">
+              <div className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#ff4d58]">
+                02. {t.engineTag}
               </div>
-
-              {/* Circular Action Button & 7 Interactive Pagination Dots */}
-              <div className="pt-4 space-y-4">
-                <button
-                  type="button"
-                  onClick={handleManualNext}
-                  className="w-10 h-10 rounded-full border border-white/25 hover:border-[#d9232e] flex items-center justify-center text-white text-xs transition-colors cursor-pointer"
-                  aria-label="Cycle Star Player Cards"
-                >
-                  &#9655;
-                </button>
-                <div className="flex items-center gap-2">
-                  {STAR_PLAYER_SLIDES.map((_, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => {
-                        setIsFlashActive(true);
-                        setActiveIndex(idx);
-                        setTimeout(() => setIsFlashActive(false), 1000);
-                      }}
-                      className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
-                        idx === activeIndex
-                          ? 'w-5 bg-[#d9232e] shadow-[0_0_10px_rgba(217,35,46,0.8)]'
-                          : 'w-2 bg-zinc-700 hover:bg-zinc-500'
-                      }`}
-                      aria-label={`Select player card ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
+              <h2 className="font-editorial font-bold text-3xl sm:text-5xl uppercase tracking-tight text-white">
+                {t.studioBadge}
+              </h2>
             </div>
 
-            {/* Center Column: 3 Circular Stat Badges */}
-            <div className="anim-slide-up lg:col-span-6 flex items-center justify-center gap-3 sm:gap-5">
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#f4f4f0] text-[#111215] flex flex-col items-center justify-center shadow-xl shrink-0">
-                <span className="text-[10px] sm:text-xs font-medium text-zinc-600 uppercase tracking-wider text-center px-2">
-                  {t.statMatches}
-                </span>
-                <span className="font-editorial font-bold text-3xl sm:text-5xl leading-none mt-1 tabular-nums">
-                  147
-                </span>
-              </div>
+            <p className="anim-slide-right font-editorial font-bold text-sm sm:text-lg uppercase leading-snug tracking-[0.04em] text-zinc-300 max-w-md md:text-right">
+              {t.quote}
+            </p>
+          </div>
 
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#d9232e] text-white flex flex-col items-center justify-center shadow-[0_12px_35px_rgba(217,35,46,0.45)] shrink-0">
-                <span className="text-[10px] sm:text-xs font-medium text-white/85 uppercase tracking-wider text-center px-2">
-                  {t.statActiveCups}
-                </span>
-                <span className="font-editorial font-bold text-3xl sm:text-5xl leading-none mt-1 tabular-nums">
-                  6
-                </span>
-              </div>
-
-              <div className="w-28 h-28 sm:w-36 sm:h-36 rounded-full bg-[#18191e] border border-white/15 text-white flex flex-col items-center justify-center shrink-0">
-                <span className="text-[10px] sm:text-xs font-medium text-zinc-400 uppercase tracking-wider text-center px-2">
-                  {t.statDivisions}
-                </span>
-                <span className="font-editorial font-bold text-3xl sm:text-5xl leading-none mt-1 tabular-nums">
-                  3
-                </span>
-              </div>
+          {/* Structured 3-Card Tournament Metric Strip */}
+          <div className="anim-slide-up grid grid-cols-3 gap-3 sm:gap-6 max-w-3xl mx-auto mt-8 sm:mt-10">
+            <div className="rounded-2xl bg-[#f4f4f0] text-[#0e1014] p-4 sm:p-6 flex flex-col items-center justify-center text-center shadow-lg">
+              <span className="text-[10px] sm:text-xs font-mono font-semibold text-zinc-600 uppercase tracking-wider">
+                {t.statMatches}
+              </span>
+              <span className="font-editorial font-bold text-3xl sm:text-5xl leading-none mt-1.5 tabular-nums">
+                147
+              </span>
             </div>
 
-            {/* Right Column: Uppercase Condensed Editorial Quote */}
-            <div className="anim-slide-right lg:col-span-3 flex flex-col items-start lg:items-end text-left lg:text-right">
-              <p className="font-editorial font-bold text-sm sm:text-base md:text-lg uppercase leading-snug tracking-[0.04em] text-zinc-200 max-w-[260px]">
-                {t.quote}
-              </p>
+            <div className="rounded-2xl bg-[#d9232e] text-white p-4 sm:p-6 flex flex-col items-center justify-center text-center shadow-[0_12px_30px_rgba(217,35,46,0.35)]">
+              <span className="text-[10px] sm:text-xs font-mono font-semibold text-white/90 uppercase tracking-wider">
+                {t.statActiveCups}
+              </span>
+              <span className="font-editorial font-bold text-3xl sm:text-5xl leading-none mt-1.5 tabular-nums">
+                6
+              </span>
+            </div>
+
+            <div className="rounded-2xl bg-[#151821] border border-white/15 text-white p-4 sm:p-6 flex flex-col items-center justify-center text-center">
+              <span className="text-[10px] sm:text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">
+                {t.statDivisions}
+              </span>
+              <span className="font-editorial font-bold text-3xl sm:text-5xl leading-none mt-1.5 tabular-nums">
+                3
+              </span>
             </div>
           </div>
 
-          {/* Center Arch Collage & Flanking Left/Right Circular Orbs */}
-          <div className="relative mt-20 sm:mt-24 flex items-end justify-between gap-4">
-            <a
-              href="#app-download-store"
-              className="hidden lg:flex w-14 h-14 rounded-full bg-[#d9232e] hover:scale-105 transition-transform items-center justify-center text-white shadow-[0_10px_28px_rgba(217,35,46,0.5)] shrink-0"
-              aria-label="Download App"
-            >
-              <span className="w-2 h-2 rounded-full bg-white" />
-            </a>
-
-            {/* Wide Collage Container so Left & Right Back Cards Sit Clearly Out to Both Sides */}
-            <div className="anim-slide-up relative mx-auto w-full max-w-[370px] sm:max-w-[560px] md:max-w-[640px] flex items-center justify-center pt-16 sm:pt-16">
+          {/* Center 3-Card Fanned Stage (Foreground Squad Card + Left & Right Star Player Cards) */}
+          <div className="anim-slide-up relative mt-20 sm:mt-24 flex flex-col items-center">
+            <div className="relative mx-auto w-full max-w-[370px] sm:max-w-[560px] md:max-w-[650px] flex items-center justify-center pt-16 sm:pt-16">
+              {/* Ambient Light Aura Behind Cards */}
               <div
                 className={`pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 w-80 sm:w-96 h-60 rounded-full blur-3xl transition-all duration-1000 ${
                   isFlashActive
@@ -339,7 +294,6 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
                   <span className="font-editorial font-bold text-[10px] sm:text-xs tracking-widest text-white uppercase drop-shadow">
                     {STAR_PLAYER_SLIDES[leftSlideIndex].tag}
                   </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-amber-300 shadow-[0_0_8px_#fcd34d]" />
                 </div>
 
                 <div className="relative z-10 flex-1 w-full flex items-center justify-center">
@@ -350,6 +304,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
                         key={player.src}
                         src={player.src}
                         alt={player.name}
+                        referrerPolicy="no-referrer"
                         className={`absolute left-0 right-2 bottom-[-4px] mx-auto w-[94%] h-[112%] object-contain object-bottom transition-all duration-1000 ease-in-out drop-shadow-[0_10px_20px_rgba(0,0,0,0.65)] ${
                           isActive
                             ? 'opacity-100 scale-100 translate-y-0 brightness-105 delay-150'
@@ -387,8 +342,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
                   }`}
                 />
 
-                <div className="relative z-20 flex items-center justify-between">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] shadow-[0_0_8px_#38bdf8]" />
+                <div className="relative z-20 flex items-center justify-end">
                   <span className="font-editorial font-bold text-[10px] sm:text-xs tracking-widest text-[#ff4d58] uppercase drop-shadow">
                     {STAR_PLAYER_SLIDES[rightSlideIndex].tag}
                   </span>
@@ -402,6 +356,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
                         key={player.src}
                         src={player.src}
                         alt={player.name}
+                        referrerPolicy="no-referrer"
                         className={`absolute left-2 right-0 bottom-[-4px] mx-auto w-[94%] h-[112%] object-contain object-bottom transition-all duration-1000 ease-in-out drop-shadow-[0_10px_20px_rgba(0,0,0,0.75)] ${
                           isActive
                             ? 'opacity-100 scale-100 translate-y-0 brightness-105 delay-150'
@@ -433,7 +388,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
                   referrerPolicy="no-referrer"
                   className="w-full h-40 sm:h-48 md:h-52 object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="p-3 sm:p-4 bg-[#14151b] flex items-center justify-between">
+                <div className="p-3.5 sm:p-4 bg-[#14151b] flex items-center justify-between">
                   <div>
                     <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-zinc-400">
                       {t.seasonPassLabel}
@@ -442,182 +397,222 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
                       {t.claimPassTitle}
                     </div>
                   </div>
-                  <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#d9232e] text-white inline-flex items-center justify-center text-xs font-bold shrink-0">
-                    &#8599;
+                  <span className="w-8 h-8 rounded-full bg-[#d9232e] text-white inline-flex items-center justify-center shrink-0">
+                    <ArrowUpRight className="w-4 h-4" />
                   </span>
                 </div>
               </a>
             </div>
 
-            <button
-              type="button"
-              onClick={onOpenModal}
-              className="hidden lg:flex w-14 h-14 rounded-full bg-[#f4f4f0] hover:scale-105 transition-transform items-center justify-center text-[#111215] shadow-xl shrink-0 cursor-pointer"
-              aria-label="Inspect Pass"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#111215]" />
-            </button>
+            {/* Integrated Player Card Control Bar Directly Underneath the Collage */}
+            <div className="mt-8 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#151821] border border-white/10">
+              <button
+                type="button"
+                onClick={() => handleManualStep('prev')}
+                className="w-7 h-7 rounded-full bg-white/[0.06] hover:bg-[#d9232e] flex items-center justify-center text-white transition-colors cursor-pointer"
+                aria-label="Previous Star Player Card"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+              </button>
+
+              <div className="flex items-center gap-1.5 px-1">
+                {STAR_PLAYER_SLIDES.map((slide, idx) => (
+                  <button
+                    key={slide.src}
+                    type="button"
+                    onClick={() => {
+                      setIsFlashActive(true);
+                      setActiveIndex(idx);
+                      setTimeout(() => setIsFlashActive(false), 1000);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      idx === activeIndex
+                        ? 'w-6 bg-[#d9232e]'
+                        : 'w-2 bg-zinc-600 hover:bg-zinc-400'
+                    }`}
+                    aria-label={`Show ${slide.name}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => handleManualStep('next')}
+                className="w-7 h-7 rounded-full bg-white/[0.06] hover:bg-[#d9232e] flex items-center justify-center text-white transition-colors cursor-pointer"
+                aria-label="Next Star Player Card"
+              >
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* =====================================================================
-          GOOGLE PLAY STORE STYLE MOBILE APP DOWNLOAD SECTION (Below Section 2)
+          PART B: OFFICIAL GOOGLE PLAY STORE STYLE MOBILE APP DOWNLOAD HUB
       ====================================================================== */}
       <div
         id="app-download-store"
-        className="scroll-mt-28 relative w-full max-w-[1160px] mx-auto px-4 sm:px-6 md:px-10 pt-12 sm:pt-16 pb-10 text-[#111215]"
+        className="scroll-mt-28 relative w-full max-w-[1360px] mx-auto px-4 sm:px-6 md:px-10 pt-14 sm:pt-20 pb-12 text-[#0e1014]"
       >
-        <div className="anim-slide-up rounded-[2rem] bg-white border border-black/[0.08] shadow-[0_24px_60px_rgba(17,18,21,0.08)] p-5 sm:p-8 md:p-10">
-          {/* Top Store Badge Kicker */}
-          <div className="flex flex-wrap items-center justify-between gap-2 pb-5 mb-6 border-b border-black/[0.07]">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111215] text-white text-[10px] font-mono uppercase tracking-[0.18em]">
-              <Smartphone className="w-3.5 h-3.5 text-[#d9232e]" />
+        <div className="anim-slide-up rounded-3xl bg-white border border-black/[0.08] shadow-[0_20px_50px_rgba(14,16,20,0.06)] p-5 sm:p-8 md:p-10">
+          {/* Top Store Header Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-5 mb-7 border-b border-black/[0.07]">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-[0.14em] text-[#0e1014]">
+              <Smartphone className="w-4 h-4 text-[#01875f]" />
               <span>{t.storeBadge}</span>
             </div>
-            <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-500">
+            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500 tabular-nums">
               {t.verifiedApk}
             </span>
           </div>
 
-          {/* 1. App Icon + Title + Publisher Company Name ("FC ARENA VS OFFICIAL") */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="flex items-start sm:items-center gap-4 sm:gap-6">
-              {/* App Squircle Icon */}
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-[1.35rem] overflow-hidden shadow-[0_12px_28px_rgba(0,0,0,0.22)] border border-black/10 shrink-0 bg-[#111215]">
-                <img
-                  src="assets/aistudio/fc-arena-logo.png"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      'https://fc-arena-h2h.github.io/tournament.com/pwa-512x512.png?v=2';
-                  }}
-                  alt="FC ARENA VS App Icon"
-                  className="w-full h-full object-cover"
-                />
+          {/* Balanced 12-Column App Store Hero Grid (App Identity on Left + Action Box on Right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left 7 Columns: App Icon + Title + Publisher + Play Store 4-Stat Strip */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-start sm:items-center gap-4 sm:gap-6">
+                {/* App Squircle Icon */}
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shadow-md border border-black/10 shrink-0 bg-[#0e1014]">
+                  <img
+                    src="assets/aistudio/fc-arena-logo.png"
+                    onError={(e) => {
+                      e.currentTarget.src =
+                        'https://fc-arena-h2h.github.io/tournament.com/pwa-512x512.png?v=2';
+                    }}
+                    alt="FC ARENA VS App Icon"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* App Title & Company Name */}
+                <div className="space-y-1">
+                  <h2 className="font-editorial font-bold text-3xl sm:text-4xl tracking-tight text-[#0e1014] uppercase leading-none">
+                    FC ARENA VS
+                  </h2>
+                  <div className="flex items-center gap-1.5 pt-0.5">
+                    <span className="text-xs sm:text-sm font-bold text-[#01875f] tracking-wide uppercase">
+                      FC ARENA VS OFFICIAL
+                    </span>
+                    <CheckCircle2 className="w-4 h-4 text-[#01875f] shrink-0" />
+                  </div>
+                  <p className="text-xs sm:text-sm text-zinc-600">
+                    {t.appSubtitle}
+                  </p>
+                </div>
               </div>
 
-              {/* App Title & Company Name */}
-              <div className="space-y-1">
-                <h2 className="font-editorial font-bold text-2xl sm:text-4xl tracking-tight text-[#111215] uppercase leading-none">
-                  FC ARENA VS
-                </h2>
-                <div className="flex items-center gap-1.5 pt-0.5">
-                  <span className="text-xs sm:text-sm font-bold text-[#01875f] tracking-wide uppercase">
-                    FC ARENA VS OFFICIAL
+              {/* Play Store Style Rating, Downloads, OS & Age Strip */}
+              <div className="grid grid-cols-4 gap-2 sm:gap-4 py-4 px-3 rounded-2xl bg-zinc-50 border border-black/[0.06]">
+                <div className="flex flex-col items-center justify-center px-2 border-r border-black/[0.08]">
+                  <div className="flex items-center gap-1 font-bold text-sm sm:text-lg text-[#0e1014] tabular-nums">
+                    <span>4.9</span>
+                    <Star className="w-3.5 h-3.5 fill-[#0e1014] text-[#0e1014]" />
+                  </div>
+                  <span className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 text-center">
+                    {t.reviewsLabel}
                   </span>
-                  <CheckCircle2 className="w-4 h-4 text-[#01875f] shrink-0" />
                 </div>
-                <p className="text-xs text-zinc-500">{t.appSubtitle}</p>
+
+                <div className="flex flex-col items-center justify-center px-2 border-r border-black/[0.08]">
+                  <span className="font-bold text-sm sm:text-lg text-[#0e1014] tabular-nums">
+                    10K+
+                  </span>
+                  <span className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 text-center">
+                    {t.downloadsLabel}
+                  </span>
+                </div>
+
+                <div className="flex flex-col items-center justify-center px-2 border-r border-black/[0.08]">
+                  <span className="font-bold text-sm sm:text-lg text-[#01875f] tabular-nums">
+                    7.0+
+                  </span>
+                  <span className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 text-center">
+                    {t.androidOsLabel}
+                  </span>
+                </div>
+
+                <div className="flex flex-col items-center justify-center px-2">
+                  <span className="px-1.5 py-0.5 rounded border border-black/30 font-bold text-[10px] sm:text-xs text-[#0e1014] leading-none tabular-nums">
+                    3+
+                  </span>
+                  <span className="text-[10px] sm:text-xs text-zinc-500 mt-1 text-center">
+                    {t.ratedLabel}
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* 2. Play Store Style Rating, Downloads, Version & Age Strip */}
-            <div className="grid grid-cols-4 gap-2 sm:gap-4 pt-2 md:pt-0 border-t md:border-t-0 border-black/[0.07]">
-              <div className="flex flex-col items-center justify-center px-2 border-r border-black/[0.08]">
-                <div className="flex items-center gap-1 font-bold text-sm sm:text-base text-[#111215]">
-                  <span>4.9</span>
-                  <Star className="w-3.5 h-3.5 fill-[#111215] text-[#111215]" />
-                </div>
-                <span className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 text-center">
-                  {t.reviewsLabel}
-                </span>
-              </div>
-
-              <div className="flex flex-col items-center justify-center px-2 border-r border-black/[0.08]">
-                <span className="font-bold text-sm sm:text-base text-[#111215]">
-                  10K+
-                </span>
-                <span className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 text-center">
-                  {t.downloadsLabel}
-                </span>
-              </div>
-
-              <div className="flex flex-col items-center justify-center px-2 border-r border-black/[0.08]">
-                <span className="font-bold text-sm sm:text-base text-[#01875f]">
-                  7.0+
-                </span>
-                <span className="text-[10px] sm:text-xs text-zinc-500 mt-0.5 text-center">
-                  {t.androidOsLabel}
-                </span>
-              </div>
-
-              <div className="flex flex-col items-center justify-center px-2">
-                <span className="px-1.5 py-0.5 rounded border border-black/30 font-bold text-[10px] sm:text-xs text-[#111215] leading-none">
-                  3+
-                </span>
-                <span className="text-[10px] sm:text-xs text-zinc-500 mt-1 text-center">
-                  {t.ratedLabel}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* 3. Action Buttons: Download APK + Continue to Website + Official Telegram & Facebook */}
-          <div className="mt-7 flex flex-col gap-3 max-w-2xl">
-            {/* Primary APK Download Button */}
-            <a
-              href={APK_DOWNLOAD_URL}
-              download="FC.ARENA.VS.v.2.4.5.apk"
-              className="w-full py-3.5 px-6 rounded-xl bg-[#01875f] hover:bg-[#016f4e] active:scale-[0.99] text-white font-semibold text-sm sm:text-base tracking-wide flex items-center justify-center gap-2.5 shadow-[0_10px_25px_rgba(1,135,95,0.28)] transition-all cursor-pointer"
-            >
-              <Download className="w-5 h-5 shrink-0" />
-              <span>{t.downloadApkBtn}</span>
-            </a>
-
-            {/* Secondary Button Directly Below: "Continue to website" */}
-            <a
-              href={LIVE_WEBSITE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 px-6 rounded-xl bg-zinc-100 hover:bg-zinc-200/80 border border-black/15 text-[#111215] font-semibold text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 transition-all cursor-pointer"
-            >
-              <Globe className="w-4 h-4 text-[#d9232e] shrink-0" />
-              <span>{t.continueWebsiteBtn}</span>
-            </a>
-
-            {/* Official Community Links from .md files (Telegram & Facebook Page) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+            {/* Right 5 Columns: Dedicated Download & Portal Action Panel */}
+            <div className="lg:col-span-5 rounded-2xl bg-zinc-50 border border-black/[0.08] p-4 sm:p-5 flex flex-col gap-3">
+              {/* Primary APK Download Button */}
               <a
-                href={OFFICIAL_TELEGRAM_URL}
+                href={APK_DOWNLOAD_URL}
+                download="FC.ARENA.VS.v.2.4.5.apk"
+                className="w-full py-3.5 px-6 rounded-xl bg-[#01875f] hover:bg-[#016f4e] active:scale-[0.99] text-white font-semibold text-sm sm:text-base tracking-wide flex items-center justify-center gap-2.5 shadow-[0_8px_20px_rgba(1,135,95,0.25)] transition-all cursor-pointer whitespace-nowrap"
+              >
+                <Download className="w-5 h-5 shrink-0" />
+                <span>{t.downloadApkBtn}</span>
+              </a>
+
+              {/* Secondary Button Directly Below: "Continue to website" */}
+              <a
+                href={LIVE_WEBSITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-4 rounded-xl bg-[#0088cc]/10 hover:bg-[#0088cc]/20 border border-[#0088cc]/25 text-[#0077b5] font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all"
+                className="w-full py-3 px-6 rounded-xl bg-white hover:bg-zinc-100 border border-black/15 text-[#0e1014] font-semibold text-sm sm:text-base tracking-wide flex items-center justify-center gap-2 transition-all cursor-pointer whitespace-nowrap"
               >
-                <Send className="w-4 h-4 shrink-0" />
-                <span>{t.telegramBtn}</span>
+                <Globe className="w-4 h-4 text-[#d9232e] shrink-0" />
+                <span>{t.continueWebsiteBtn}</span>
               </a>
-              <a
-                href={OFFICIAL_FACEBOOK_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-2.5 px-4 rounded-xl bg-[#1877f2]/10 hover:bg-[#1877f2]/20 border border-[#1877f2]/25 text-[#1877f2] font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all"
-              >
-                <Share2 className="w-4 h-4 shrink-0" />
-                <span>{t.facebookBtn}</span>
-              </a>
-            </div>
 
-            <div className="flex items-center gap-2 text-[11px] text-zinc-500 pt-0.5">
-              <ShieldCheck className="w-4 h-4 text-[#01875f] shrink-0" />
-              <span>{t.safeApkNote}</span>
+              {/* Official Community Links (Telegram & Facebook Page) */}
+              <div className="grid grid-cols-2 gap-2.5 pt-0.5">
+                <a
+                  href={OFFICIAL_TELEGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2.5 px-3 rounded-xl bg-white hover:bg-[#0088cc]/10 border border-black/10 text-[#0077b5] font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors whitespace-nowrap"
+                >
+                  <Send className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">{t.telegramBtn}</span>
+                </a>
+                <a
+                  href={OFFICIAL_FACEBOOK_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="py-2.5 px-3 rounded-xl bg-white hover:bg-[#1877f2]/10 border border-black/10 text-[#1877f2] font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors whitespace-nowrap"
+                >
+                  <Share2 className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">{t.facebookBtn}</span>
+                </a>
+              </div>
+
+              <div className="flex items-center justify-center gap-2 text-[11px] text-zinc-600 pt-1">
+                <ShieldCheck className="w-4 h-4 text-[#01875f] shrink-0" />
+                <span>{t.safeApkNote}</span>
+              </div>
             </div>
           </div>
 
           {/* 4. Play Store Horizontal App Screenshots Carousel */}
-          <div className="mt-9 pt-7 border-t border-black/[0.08]">
-            <div className="flex items-center justify-between mb-4">
+          <div className="mt-10 pt-8 border-t border-black/[0.08]">
+            <div className="flex items-center justify-between mb-5">
               <div>
-                <h3 className="font-editorial font-bold text-xl sm:text-2xl uppercase tracking-wide text-[#111215]">
+                <h3 className="font-editorial font-bold text-2xl sm:text-3xl uppercase tracking-wide text-[#0e1014]">
                   {t.screenshotsTitle}
                 </h3>
-                <p className="text-xs text-zinc-500">{t.screenshotsSubtitle}</p>
+                <p className="text-xs sm:text-sm text-zinc-500 mt-0.5">
+                  {t.screenshotsSubtitle}
+                </p>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={() => scrollScreenshots('left')}
-                  className="w-9 h-9 rounded-full border border-black/15 hover:bg-black hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-black/15 hover:bg-[#0e1014] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
                   aria-label="Scroll screenshots left"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -625,7 +620,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
                 <button
                   type="button"
                   onClick={() => scrollScreenshots('right')}
-                  className="w-9 h-9 rounded-full border border-black/15 hover:bg-black hover:text-white flex items-center justify-center transition-colors cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-black/15 hover:bg-[#0e1014] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
                   aria-label="Scroll screenshots right"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -636,30 +631,31 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
             {/* Horizontal Scrollable Screenshot Strip */}
             <div
               ref={scrollContainerRef}
-              className="flex items-stretch gap-3.5 sm:gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory"
+              className="flex items-stretch gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory"
             >
               {APP_SCREENSHOTS.map((shot, idx) => (
                 <div
                   key={shot.src}
                   onClick={() => setSelectedScreenshot(shot)}
-                  className="snap-start shrink-0 w-[165px] sm:w-[200px] md:w-[220px] rounded-2xl overflow-hidden bg-[#111215] border border-black/10 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer group flex flex-col"
+                  className="snap-start shrink-0 w-[170px] sm:w-[205px] md:w-[225px] rounded-2xl overflow-hidden bg-[#0e1014] border border-black/10 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 cursor-pointer group flex flex-col"
                 >
                   <div className="relative aspect-[9/19] w-full overflow-hidden bg-zinc-900">
                     <img
                       src={shot.src}
                       alt={shot.title}
                       loading="lazy"
-                      className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
                     />
-                    <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-black/65 text-white font-mono text-[9px]">
+                    <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/70 text-white font-mono text-[10px] tabular-nums">
                       {String(idx + 1).padStart(2, '0')}
                     </div>
                   </div>
-                  <div className="p-2.5 bg-white border-t border-black/5">
-                    <p className="font-semibold text-xs text-[#111215] truncate">
+                  <div className="p-3 bg-white border-t border-black/5">
+                    <p className="font-semibold text-xs text-[#0e1014] truncate">
                       {shot.title}
                     </p>
-                    <p className="text-[10px] text-zinc-500 truncate mt-0.5">
+                    <p className="text-[11px] text-zinc-500 truncate mt-0.5">
                       {shot.caption}
                     </p>
                   </div>
@@ -669,110 +665,123 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
           </div>
 
           {/* 5. Play Store "About this app" Section + Technical Specifications */}
-          <div className="mt-8 pt-7 border-t border-black/[0.08] grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-7 space-y-4">
+          <div className="mt-10 pt-8 border-t border-black/[0.08] grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div className="lg:col-span-7 space-y-5">
               <div className="flex items-center gap-2">
                 <Info className="w-5 h-5 text-[#01875f]" />
-                <h3 className="font-editorial font-bold text-xl sm:text-2xl uppercase tracking-wide text-[#111215]">
+                <h3 className="font-editorial font-bold text-2xl sm:text-3xl uppercase tracking-wide text-[#0e1014]">
                   {t.aboutAppTitle}
                 </h3>
               </div>
 
-              <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed">
+              <p className="text-sm text-zinc-700 leading-relaxed">
                 {t.aboutAppIntro}
               </p>
 
-              <div className="space-y-3 pt-1">
-                <div className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-700">
-                  <Award className="w-4 h-4 text-[#d9232e] shrink-0 mt-0.5" />
-                  <span>
-                    <strong>{t.aboutBullet1Title}</strong> {t.aboutBullet1Text}
-                  </span>
+              {/* Structured 2x2 Feature Highlight Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+                <div className="rounded-xl bg-zinc-50 border border-black/[0.06] p-4 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-xs sm:text-sm text-[#0e1014]">
+                    <Award className="w-4 h-4 text-[#d9232e] shrink-0" />
+                    <span>{t.aboutBullet1Title}</span>
+                  </div>
+                  <p className="text-xs text-zinc-600 leading-relaxed">
+                    {t.aboutBullet1Text}
+                  </p>
                 </div>
-                <div className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-700">
-                  <Layers className="w-4 h-4 text-[#01875f] shrink-0 mt-0.5" />
-                  <span>
-                    <strong>{t.aboutBullet2Title}</strong> {t.aboutBullet2Text}
-                  </span>
+
+                <div className="rounded-xl bg-zinc-50 border border-black/[0.06] p-4 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-xs sm:text-sm text-[#0e1014]">
+                    <Layers className="w-4 h-4 text-[#01875f] shrink-0" />
+                    <span>{t.aboutBullet2Title}</span>
+                  </div>
+                  <p className="text-xs text-zinc-600 leading-relaxed">
+                    {t.aboutBullet2Text}
+                  </p>
                 </div>
-                <div className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-700">
-                  <Star className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                  <span>
-                    <strong>{t.aboutBullet3Title}</strong> {t.aboutBullet3Text}
-                  </span>
+
+                <div className="rounded-xl bg-zinc-50 border border-black/[0.06] p-4 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-xs sm:text-sm text-[#0e1014]">
+                    <Star className="w-4 h-4 text-amber-500 shrink-0" />
+                    <span>{t.aboutBullet3Title}</span>
+                  </div>
+                  <p className="text-xs text-zinc-600 leading-relaxed">
+                    {t.aboutBullet3Text}
+                  </p>
                 </div>
-                <div className="flex items-start gap-2.5 text-xs sm:text-sm text-zinc-700">
-                  <Smartphone className="w-4 h-4 text-[#111215] shrink-0 mt-0.5" />
-                  <span>
-                    <strong>{t.aboutBullet4Title}</strong> {t.aboutBullet4Text}
-                  </span>
+
+                <div className="rounded-xl bg-zinc-50 border border-black/[0.06] p-4 space-y-1.5">
+                  <div className="flex items-center gap-2 font-semibold text-xs sm:text-sm text-[#0e1014]">
+                    <Smartphone className="w-4 h-4 text-[#0e1014] shrink-0" />
+                    <span>{t.aboutBullet4Title}</span>
+                  </div>
+                  <p className="text-xs text-zinc-600 leading-relaxed">
+                    {t.aboutBullet4Text}
+                  </p>
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 pt-2">
-                {[
-                  'Sports',
-                  'eSports Tournament',
-                  'FC Mobile H2H',
-                  'BDT & USDT Prizes',
-                  'Publisher Portal',
-                  'Android APK v2.4.5',
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 rounded-full bg-zinc-100 border border-black/10 text-xs font-medium text-zinc-700"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              {/* Clean Unboxed Metadata Line */}
+              <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono text-zinc-500">
+                <span>Sports</span>
+                <span>·</span>
+                <span>eSports Tournament</span>
+                <span>·</span>
+                <span>FC Mobile H2H</span>
+                <span>·</span>
+                <span>BDT &amp; USDT Prizes</span>
+                <span>·</span>
+                <span>Publisher Portal</span>
+                <span>·</span>
+                <span>Android APK v2.4.5</span>
               </div>
             </div>
 
-            {/* Right 5 Columns: App Info / Device Compatibility Box */}
+            {/* Right 5 Columns: App Info / Device Compatibility Table */}
             <div className="lg:col-span-5">
-              <div className="rounded-2xl bg-zinc-50 border border-black/[0.08] p-5 space-y-3.5">
-                <h4 className="font-editorial font-bold text-base sm:text-lg uppercase tracking-wide text-[#111215] border-b border-black/[0.07] pb-2.5">
+              <div className="rounded-2xl bg-zinc-50 border border-black/[0.08] p-5 sm:p-6 space-y-4">
+                <h4 className="font-editorial font-bold text-lg sm:text-xl uppercase tracking-wide text-[#0e1014] border-b border-black/[0.08] pb-3">
                   {t.appInfoTitle}
                 </h4>
 
-                <div className="space-y-2.5 text-xs sm:text-sm">
-                  <div className="flex items-center justify-between py-1 border-b border-black/[0.05]">
+                <div className="space-y-3 text-xs sm:text-sm">
+                  <div className="flex items-center justify-between py-1.5 border-b border-black/[0.05]">
                     <span className="text-zinc-500">{t.infoSupportedOs}</span>
                     <span className="font-semibold text-[#01875f]">
                       {t.infoAndroidOnly}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between py-1 border-b border-black/[0.05]">
+                  <div className="flex items-center justify-between py-1.5 border-b border-black/[0.05]">
                     <span className="text-zinc-500">
                       {t.infoRequiredAndroid}
                     </span>
-                    <span className="font-semibold text-[#111215]">
+                    <span className="font-semibold text-[#0e1014] tabular-nums">
                       {t.infoAndroidVersion}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between py-1 border-b border-black/[0.05]">
+                  <div className="flex items-center justify-between py-1.5 border-b border-black/[0.05]">
                     <span className="text-zinc-500">
                       {t.infoCurrentVersion}
                     </span>
-                    <span className="font-semibold text-[#111215]">
+                    <span className="font-semibold text-[#0e1014] tabular-nums">
                       {t.infoVersionVal}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between py-1 border-b border-black/[0.05]">
+                  <div className="flex items-center justify-between py-1.5 border-b border-black/[0.05]">
                     <span className="text-zinc-500">{t.infoPrizeSupport}</span>
                     <span className="font-semibold text-[#d9232e]">
                       {t.infoPrizeVal}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between py-1 border-b border-black/[0.05]">
+                  <div className="flex items-center justify-between py-1.5 border-b border-black/[0.05]">
                     <span className="text-zinc-500">{t.infoOfferedBy}</span>
-                    <span className="font-semibold text-[#111215]">
+                    <span className="font-semibold text-[#0e1014]">
                       FC ARENA VS OFFICIAL
                     </span>
                   </div>
-                  <div className="flex items-center justify-between py-1">
+                  <div className="flex items-center justify-between py-1.5">
                     <span className="text-zinc-500">{t.infoPackageFormat}</span>
-                    <span className="font-mono text-xs font-semibold text-[#111215]">
+                    <span className="font-mono text-xs font-semibold text-[#0e1014]">
                       FC.ARENA.VS.v.2.4.5.apk
                     </span>
                   </div>
@@ -790,7 +799,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
           onClick={() => setSelectedScreenshot(null)}
         >
           <div
-            className="relative max-w-sm w-full bg-[#16181d] rounded-3xl overflow-hidden border border-white/15 shadow-2xl"
+            className="relative max-w-sm w-full bg-[#151821] rounded-3xl overflow-hidden border border-white/15 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 text-white">
@@ -815,6 +824,7 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({
               <img
                 src={selectedScreenshot.src}
                 alt={selectedScreenshot.title}
+                referrerPolicy="no-referrer"
                 className="w-full h-auto object-contain"
               />
             </div>
