@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { UserCheck, Shield, CheckCircle2 } from 'lucide-react';
+import { UserCheck, Shield, CheckCircle2, Youtube, ArrowUpRight } from 'lucide-react';
 import { TranslationContent } from '../i18n/translations';
 
 interface Section3RulesProps {
   t: TranslationContent['section3'];
 }
+
+const OFFICIAL_YOUTUBE_URL =
+  'https://youtube.com/@fc-arena-vs-official?si=tmLv3zw8rNY5d24d';
 
 export const Section3Rules: React.FC<Section3RulesProps> = ({ t }) => {
   const [activeGuideTab, setActiveGuideTab] = useState<'player' | 'publisher'>(
@@ -205,6 +208,37 @@ export const Section3Rules: React.FC<Section3RulesProps> = ({ t }) => {
               </div>
             </div>
           )}
+
+          {/* Official YouTube Channel Video Tutorials Hub Card */}
+          <div className="mt-6 rounded-2xl bg-white border border-black/[0.08] p-5 sm:p-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-xs">
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#ff0000]/10 border border-[#ff0000]/20 flex items-center justify-center shrink-0">
+                <Youtube className="w-6 h-6 sm:w-7 sm:h-7 text-[#ff0000]" />
+              </div>
+              <div className="space-y-1">
+                <div className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[#d9232e]">
+                  OFFICIAL VIDEO TUTORIALS · @FC-ARENA-VS-OFFICIAL
+                </div>
+                <h4 className="font-editorial font-bold text-xl sm:text-2xl uppercase tracking-wide text-[#0e1014]">
+                  Watch FC ARENA VS Step-by-Step Video Guides on YouTube
+                </h4>
+                <p className="text-xs sm:text-sm text-zinc-600 max-w-2xl">
+                  Learn how to join FC Mobile H2H tournaments, submit match scores, manage your squad tactics, and create leagues in the Publisher Portal on our official YouTube channel.
+                </p>
+              </div>
+            </div>
+
+            <a
+              href={OFFICIAL_YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#ff0000] hover:bg-[#cc0000] text-white font-semibold text-xs sm:text-sm tracking-wide transition-colors whitespace-nowrap shrink-0 shadow-[0_8px_20px_rgba(255,0,0,0.22)]"
+            >
+              <Youtube className="w-4 h-4 shrink-0" />
+              <span>Watch on YouTube</span>
+              <ArrowUpRight className="w-4 h-4 shrink-0" />
+            </a>
+          </div>
         </div>
       </div>
     </section>

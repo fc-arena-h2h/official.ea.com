@@ -1,5 +1,5 @@
 import React from 'react';
-import { Globe, ArrowUpRight } from 'lucide-react';
+import { Globe, ArrowUpRight, Youtube } from 'lucide-react';
 import { LANGUAGES, LanguageCode, TranslationContent } from '../i18n/translations';
 
 interface NavbarSectionProps {
@@ -7,6 +7,9 @@ interface NavbarSectionProps {
   onChangeLang: (lang: LanguageCode) => void;
   t: TranslationContent['nav'];
 }
+
+const OFFICIAL_YOUTUBE_URL =
+  'https://youtube.com/@fc-arena-vs-official?si=tmLv3zw8rNY5d24d';
 
 export const NavbarSection: React.FC<NavbarSectionProps> = ({
   lang,
@@ -43,7 +46,7 @@ export const NavbarSection: React.FC<NavbarSectionProps> = ({
 
         {/* Zone 2: Desktop Quick Navigation Links */}
         <nav
-          className="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-300"
+          className="hidden lg:flex items-center gap-6 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-300"
           aria-label="Primary Navigation"
         >
           <a
@@ -71,10 +74,13 @@ export const NavbarSection: React.FC<NavbarSectionProps> = ({
             {t.rulesGuide}
           </a>
           <a
-            href="#section-4"
-            className="hover:text-white transition-colors whitespace-nowrap shrink-0"
+            href={OFFICIAL_YOUTUBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-[#ff4d58] hover:text-white transition-colors whitespace-nowrap shrink-0"
           >
-            {t.matchHub}
+            <Youtube className="w-3.5 h-3.5 shrink-0" />
+            <span>TUTORIALS</span>
           </a>
         </nav>
 
@@ -95,7 +101,7 @@ export const NavbarSection: React.FC<NavbarSectionProps> = ({
         <div className="max-w-[1360px] mx-auto px-4 sm:px-6 md:px-10 py-1.5 flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-4">
           {/* Shortcut Keywords (Always visible below header for mobile & tablet) */}
           <nav
-            className="w-full sm:w-auto flex items-center justify-start sm:justify-start gap-3 overflow-x-auto no-scrollbar text-[10px] sm:text-[11px] font-mono font-medium tracking-[0.1em] uppercase text-zinc-300 py-0.5"
+            className="w-full sm:w-auto flex items-center justify-start gap-3 overflow-x-auto no-scrollbar text-[10px] sm:text-[11px] font-mono font-medium tracking-[0.1em] uppercase text-zinc-300 py-0.5"
             aria-label="Section Shortcuts"
           >
             <a
@@ -135,10 +141,13 @@ export const NavbarSection: React.FC<NavbarSectionProps> = ({
               /
             </span>
             <a
-              href="#section-4"
-              className="hover:text-white transition-colors whitespace-nowrap shrink-0"
+              href={OFFICIAL_YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#ff4d58] hover:text-white font-semibold transition-colors whitespace-nowrap shrink-0 inline-flex items-center gap-1"
             >
-              {t.matchHub}
+              <Youtube className="w-3 h-3 shrink-0" />
+              <span>YOUTUBE</span>
             </a>
           </nav>
 

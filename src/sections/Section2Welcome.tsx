@@ -15,6 +15,7 @@ import {
   Share2,
   X,
   ArrowUpRight,
+  Youtube,
 } from 'lucide-react';
 import { TranslationContent } from '../i18n/translations';
 
@@ -165,6 +166,8 @@ const LIVE_WEBSITE_URL = 'https://fc-arena-h2h.github.io/tournament.com';
 const OFFICIAL_TELEGRAM_URL = 'https://t.me/fcarenavsofficial';
 const OFFICIAL_FACEBOOK_URL =
   'https://www.facebook.com/profile.php?id=61595965529079';
+const OFFICIAL_YOUTUBE_URL =
+  'https://youtube.com/@fc-arena-vs-official?si=tmLv3zw8rNY5d24d';
 
 export const Section2Welcome: React.FC<Section2WelcomeProps> = ({ t }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -565,6 +568,18 @@ export const Section2Welcome: React.FC<Section2WelcomeProps> = ({ t }) => {
               >
                 <Globe className="w-4 h-4 text-[#d9232e] shrink-0" />
                 <span>{t.continueWebsiteBtn}</span>
+              </a>
+
+              {/* Official YouTube Channel (Video Tutorials) */}
+              <a
+                href={OFFICIAL_YOUTUBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-2.5 px-4 rounded-xl bg-[#ff0000]/10 hover:bg-[#ff0000]/15 border border-[#ff0000]/25 text-[#cc0000] font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 transition-colors whitespace-nowrap"
+              >
+                <Youtube className="w-4 h-4 shrink-0 text-[#ff0000]" />
+                <span>Official YouTube (Video Tutorials)</span>
+                <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
               </a>
 
               {/* Official Community Links (Telegram & Facebook Page) */}

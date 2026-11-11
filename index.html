@@ -13,11 +13,13 @@
     />
     <meta
       name="keywords"
-      content="FC ARENA VS, FC ARENA VS OFFICIAL, FC Arena VS APK, FC Mobile H2H Tournament, EA Sports FC Mobile 27 Tournament, FC Arena H2H, FC Mobile Esports, FC Arena Publisher Portal, FC Mobile Tournament App"
+      content="FC ARENA VS, FC ARENA VS OFFICIAL, FC Arena VS App, FC Arena VS APK Download, FC Arena VS YouTube, @fc-arena-vs-official, FC Mobile H2H Tournament, EA Sports FC Mobile 27 Tournament, FC Arena H2H, FC Arena Publisher Portal, FC Mobile Tournament App"
     />
     <meta name="author" content="FC ARENA VS OFFICIAL" />
+    <meta name="publisher" content="FC ARENA VS OFFICIAL" />
     <meta name="application-name" content="FC ARENA VS" />
-    <meta name="theme-color" content="#111215" />
+    <meta name="apple-mobile-web-app-title" content="FC ARENA VS" />
+    <meta name="theme-color" content="#0e1014" />
     <meta
       name="robots"
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
@@ -37,9 +39,9 @@
     <link rel="alternate" hreflang="zh" href="https://fc-arena-h2h.github.io/official.ea.com/" />
     <link rel="alternate" hreflang="x-default" href="https://fc-arena-h2h.github.io/official.ea.com/" />
 
-    <!-- OpenGraph / Facebook / Discord / Telegram Rich Share Cards -->
+    <!-- OpenGraph / Facebook / Discord / Telegram / YouTube Rich Share Cards -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="FC ARENA VS OFFICIAL" />
+    <meta property="og:site_name" content="FC ARENA VS" />
     <meta property="og:title" content="FC ARENA VS — Mobile Esports H2H Tournament Platform" />
     <meta
       property="og:description"
@@ -64,7 +66,7 @@
     <link rel="apple-touch-icon" href="https://fc-arena-h2h.github.io/tournament.com/pwa-192x192.png?v=2" />
     <link rel="manifest" href="site.webmanifest" />
 
-    <!-- Schema.org Structured Data (JSON-LD) for Google Rich Results -->
+    <!-- Schema.org Structured Data (JSON-LD) for Google Knowledge Graph & Rich Results -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -76,20 +78,34 @@
             "name": "FC ARENA VS",
             "alternateName": [
               "FC ARENA VS OFFICIAL",
+              "FC Arena VS App",
               "FC Arena H2H",
               "FC Arena VS Tournament Platform"
             ],
             "description": "Enter the arena. High-stakes EA Sports FC Mobile H2H tournament platform featuring dynamic group leagues, knockout stages, and instant live brackets.",
+            "publisher": {
+              "@id": "https://fc-arena-h2h.github.io/official.ea.com/#organization"
+            },
             "inLanguage": ["en", "bn", "hi", "ar", "vi", "zh"]
           },
           {
             "@type": "Organization",
             "@id": "https://fc-arena-h2h.github.io/official.ea.com/#organization",
-            "name": "FC ARENA VS OFFICIAL",
-            "alternateName": "FC ARENA VS",
+            "name": "FC ARENA VS",
+            "legalName": "FC ARENA VS OFFICIAL",
+            "alternateName": [
+              "FC ARENA VS OFFICIAL",
+              "FC Arena VS",
+              "FC Arena H2H Official"
+            ],
             "url": "https://fc-arena-h2h.github.io/official.ea.com/",
-            "logo": "https://fc-arena-h2h.github.io/tournament.com/pwa-512x512.png?v=2",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://fc-arena-h2h.github.io/tournament.com/pwa-512x512.png?v=2"
+            },
             "sameAs": [
+              "https://www.youtube.com/@fc-arena-vs-official",
+              "https://youtube.com/@fc-arena-vs-official?si=tmLv3zw8rNY5d24d",
               "https://fc-arena-h2h.github.io/tournament.com",
               "https://t.me/fcarenavsofficial",
               "https://www.facebook.com/profile.php?id=61595965529079",
@@ -98,6 +114,7 @@
           },
           {
             "@type": "SoftwareApplication",
+            "@id": "https://fc-arena-h2h.github.io/official.ea.com/#app",
             "name": "FC ARENA VS",
             "alternateName": "FC ARENA VS OFFICIAL",
             "operatingSystem": "Android 7.0 and up",
@@ -107,8 +124,7 @@
             "installUrl": "https://fc-arena-h2h.github.io/tournament.com",
             "description": "Official EA Sports FC Mobile H2H Tournament & Publisher Platform. Join 1v1 H2H cups, track live group standings & knockout brackets, or host custom tournaments.",
             "author": {
-              "@type": "Organization",
-              "name": "FC ARENA VS OFFICIAL"
+              "@id": "https://fc-arena-h2h.github.io/official.ea.com/#organization"
             },
             "offers": {
               "@type": "Offer",
@@ -124,14 +140,43 @@
             }
           },
           {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "FC ARENA VS",
+                "item": "https://fc-arena-h2h.github.io/official.ea.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Download FC ARENA VS APK v2.4.5",
+                "item": "https://fc-arena-h2h.github.io/official.ea.com/#app-download-store"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Player & Publisher Guide",
+                "item": "https://fc-arena-h2h.github.io/official.ea.com/#section-3"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Official YouTube Video Tutorials",
+                "item": "https://www.youtube.com/@fc-arena-vs-official"
+              }
+            ]
+          },
+          {
             "@type": "FAQPage",
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "What is FC ARENA VS?",
+                "name": "What is FC ARENA VS (FC ARENA VS OFFICIAL)?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "FC ARENA VS (FC ARENA VS OFFICIAL) is an automated mobile eSports tournament platform designed for EA Sports FC Mobile H2H players and tournament organizers, featuring group leagues, knockout brackets, and a Publisher Portal."
+                  "text": "FC ARENA VS (FC ARENA VS OFFICIAL) is the official competitive mobile eSports tournament platform built for EA Sports FC Mobile H2H players and tournament organizers, featuring group leagues, knockout brackets, and a Publisher Portal."
                 }
               },
               {
@@ -139,7 +184,15 @@
                 "name": "How can I download the FC ARENA VS Official Android App?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "You can download the verified FC ARENA VS Android APK (v2.4.5, compatible with Android 7.0+) directly from the official website or access the live web portal at fc-arena-h2h.github.io/tournament.com."
+                  "text": "You can download the verified FC ARENA VS Android APK (v2.4.5, compatible with Android 7.0+) directly from https://fc-arena-h2h.github.io/official.ea.com/ or access the live web portal at https://fc-arena-h2h.github.io/tournament.com."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where can I watch official FC ARENA VS video tutorials?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can watch official step-by-step video tutorials on how to join tournaments, submit match scores, and create leagues as a Publisher on the official FC ARENA VS YouTube channel at https://www.youtube.com/@fc-arena-vs-official."
                 }
               },
               {
@@ -175,14 +228,18 @@
         <h1>FC ARENA VS — FC ARENA VS OFFICIAL Mobile Esports H2H Tournament Platform</h1>
         <h2>Welcome to FC ARENA VS (Official EA Sports FC Mobile H2H Tournament &amp; Publisher Platform)</h2>
         <p>
-          FC ARENA VS (also known as FC ARENA VS OFFICIAL) is the premier EA Sports FC Mobile H2H tournament platform and Android app (APK v2.4.5).
+          FC ARENA VS (also known as FC ARENA VS OFFICIAL) is the official EA Sports FC Mobile H2H tournament platform and Android app (APK v2.4.5).
           You can join FC Mobile H2H Tournaments with BDT and USDT prize pools, track live group standings and knockout brackets, or create a tournament as a publisher.
         </p>
+        <h3>FC ARENA VS Official Links &amp; Video Tutorials</h3>
         <ul>
-          <li>Official App Name: FC ARENA VS (FC ARENA VS OFFICIAL)</li>
-          <li>Download FC ARENA VS Android APK v2.4.5: https://github.com/fc-arena-h2h/Tournament.app/releases/download/V2.4.5/FC.ARENA.VS.v.2.4.5.apk</li>
-          <li>Official Tournament Portal: https://fc-arena-h2h.github.io/tournament.com</li>
-          <li>Official Telegram Community: https://t.me/fcarenavsofficial</li>
+          <li>Official Brand &amp; App Name: FC ARENA VS (FC ARENA VS OFFICIAL)</li>
+          <li>Official Website: <a href="https://fc-arena-h2h.github.io/official.ea.com/">https://fc-arena-h2h.github.io/official.ea.com/</a></li>
+          <li>Download FC ARENA VS Android APK v2.4.5: <a href="https://github.com/fc-arena-h2h/Tournament.app/releases/download/V2.4.5/FC.ARENA.VS.v.2.4.5.apk">Download FC ARENA VS APK</a></li>
+          <li>Official Web Tournament Portal: <a href="https://fc-arena-h2h.github.io/tournament.com">https://fc-arena-h2h.github.io/tournament.com</a></li>
+          <li>Official YouTube Channel (Video Tutorials): <a href="https://youtube.com/@fc-arena-vs-official?si=tmLv3zw8rNY5d24d">FC ARENA VS OFFICIAL YouTube (@fc-arena-vs-official)</a></li>
+          <li>Official Telegram Community: <a href="https://t.me/fcarenavsofficial">https://t.me/fcarenavsofficial</a></li>
+          <li>Official Facebook Page: <a href="https://www.facebook.com/profile.php?id=61595965529079">FC ARENA VS Facebook</a></li>
         </ul>
       </div>
     </div>
@@ -191,7 +248,8 @@
         <h1>FC ARENA VS — Official EA Sports FC Mobile H2H Tournament Platform</h1>
         <p>
           Welcome to FC ARENA VS OFFICIAL. You can join FC Mobile H2H Tournaments or create your own tournament as a publisher.
-          Download the official FC ARENA VS Android APK (v2.4.5 for Android 7.0+) or visit the live web portal at
+          Download the official FC ARENA VS Android APK (v2.4.5 for Android 7.0+), watch official tutorials on YouTube at
+          <a href="https://youtube.com/@fc-arena-vs-official?si=tmLv3zw8rNY5d24d">@fc-arena-vs-official</a>, or visit the live web portal at
           <a href="https://fc-arena-h2h.github.io/tournament.com">https://fc-arena-h2h.github.io/tournament.com</a>.
         </p>
       </main>

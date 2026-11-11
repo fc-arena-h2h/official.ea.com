@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Download, Send, Share2 } from 'lucide-react';
+import { ArrowUpRight, Download, Send, Share2, Youtube } from 'lucide-react';
 import { TranslationContent } from '../i18n/translations';
 
 interface Section5FinalCtaProps {
@@ -12,6 +12,8 @@ const APK_DOWNLOAD_URL =
 const OFFICIAL_TELEGRAM_URL = 'https://t.me/fcarenavsofficial';
 const OFFICIAL_FACEBOOK_URL =
   'https://www.facebook.com/profile.php?id=61595965529079';
+const OFFICIAL_YOUTUBE_URL =
+  'https://youtube.com/@fc-arena-vs-official?si=tmLv3zw8rNY5d24d';
 
 export const Section5FinalCta: React.FC<Section5FinalCtaProps> = ({
   liveUrl,
@@ -83,8 +85,17 @@ export const Section5FinalCta: React.FC<Section5FinalCtaProps> = ({
               </a>
             </div>
 
-            {/* Official Telegram & Facebook Community Links */}
+            {/* Official YouTube, Telegram & Facebook Community Links */}
             <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+              <a
+                href={OFFICIAL_YOUTUBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#151821] border border-white/15 hover:border-[#ff0000] text-[#ff4d58] text-xs font-semibold transition-colors whitespace-nowrap"
+              >
+                <Youtube className="w-3.5 h-3.5 shrink-0 text-[#ff0000]" />
+                <span>Official YouTube Tutorials</span>
+              </a>
               <a
                 href={OFFICIAL_TELEGRAM_URL}
                 target="_blank"
@@ -125,6 +136,14 @@ export const Section5FinalCta: React.FC<Section5FinalCtaProps> = ({
 
           <div className="flex flex-wrap items-center justify-center gap-5 uppercase tracking-wider text-[11px]">
             <a
+              href={OFFICIAL_YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#ff4d58] hover:text-white transition-colors font-semibold"
+            >
+              YouTube
+            </a>
+            <a
               href={OFFICIAL_TELEGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
@@ -150,7 +169,7 @@ export const Section5FinalCta: React.FC<Section5FinalCtaProps> = ({
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#ff4d58] font-semibold hover:underline"
+              className="text-white font-semibold hover:underline"
             >
               {t.officialSiteLink}
             </a>
